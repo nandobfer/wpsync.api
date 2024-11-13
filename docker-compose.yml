@@ -1,0 +1,47 @@
+name: wpsync.api
+
+services:
+  api:
+    image: nandoburgos/wpsync.api
+    container_name: wpsync.api
+    environment:
+      - PORT=8105
+      - DATABASE_URL=mysql://boz:ewhblt69@mysql:3306/wpsync
+      - URL=https://api.wpsync.boz.app.br
+    ports:
+      - "8105:8105"
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    volumes:
+      - static_volume:/app/static
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      - MYSQL_DATABASE=wpsync
+      - MYSQL_USER=boz
+      - MYSQL_PASSWORD=ewhblt69
+      - MYSQL_ROOT_PASSWORD=ewhblt69
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/custom.cnf
+    ports:
+      - "4306:3306"
+    restart: unless-stopped
+
+volumes:
+  static_volume:
+    name: "wpsync_static_files"
+  mysql-data:
+    name: "wpsync_mysql_data"
+
+networks:
+  default:
+    name: wpsync_network

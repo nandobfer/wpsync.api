@@ -1,0 +1,48 @@
+{
+    "name": "wpsync.api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "npx tsc",
+        "start": "node dist/index.js",
+        "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@prisma/client": "^5.1.1",
+        "axios": "^1.4.0",
+        "body-parser": "^1.20.2",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.18.2",
+        "express-fileupload": "^1.5.0",
+        "express-prom-bundle": "^8.0.0",
+        "fuse.js": "^7.0.0",
+        "ip": "^2.0.1",
+        "lodash": "^4.17.21",
+        "numeral": "^2.0.6",
+        "prom-client": "^15.1.3",
+        "socket.io": "^4.7.2",
+        "tmp-promise": "^3.0.3",
+        "uid": "^2.0.2"
+    },
+    "devDependencies": {
+        "@types/cookie-parser": "^1.4.3",
+        "@types/cors": "^2.8.13",
+        "@types/express": "^4.17.17",
+        "@types/express-fileupload": "^1.5.0",
+        "@types/ip": "^1.1.3",
+        "@types/lodash": "^4.17.10",
+        "@types/node": "^20.4.9",
+        "@types/numeral": "^2.0.5",
+        "concurrently": "^8.2.0",
+        "nodemon": "^3.0.1",
+        "prisma": "^5.1.1",
+        "typescript": "^5.1.6"
+    }
+}
